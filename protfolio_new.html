@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-US" box-sizing: border-box;>
+
+<head>
+<title>Lucas Paskash Online Portfolio Main Page</title>
+<!--currently disabled css sheet link. write styles in html, then copy over later-->    
+<!--<link rel="stylesheet" type="text/css" href="portfolio_styles.css">-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </meta>
+<style>
+    hmtl {
+        font-family: sans-serif;
+    }
+    .main_body {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+    .wrapper {
+        height: auto;
+        width: 100%;
+        padding: 0 auto;
+        padding-left: 18px;
+        margin: 0px;
+        border:30px solid #fff;
+        font-family: Orator Std, Arial, sans-serif;
+        box-sizing: inherit;
+        position: center;
+    }
+/* NAV HEADER (Covers the upward scrolling) */
+    #nav_head {
+        height: 0px;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        background: none repeat scroll 0 0 #fff;
+        overflow: visible;
+        border-top:  30px solid #fff; /*Change color back to #fff once ready */
+        text-align: center;
+    }
+    .blocks {
+        display: inline-block;
+        width: 50% ;
+        height: 250px;
+        position: inherit;
+        padding:  0px;
+        margin-left: -5px;
+        margin-right: -5px;
+        margin-top: -5px;
+        margin-bottom: -5px;
+        box-sizing: border-box;
+        white-space: nowrap;
+        vertical-align: top; /*Fixed safari box problem. Also, removed overflow:hidden; */
+        
+    }
+/* INDIVIDUAL DIV BOX STYLE */
+    #box1 {
+        background-color: #aaaaaa;
+        padding-top: 30px;
+        margin-top: 30px;
+    }
+    #box2 {
+        background-color: #71a59c;
+        padding-top: 30px;
+        margin-top: 30px;
+    }
+    #box3 {
+        background-color: #a5717a;
+    }
+    #box4 {
+        background-color: #9c71a5;
+    }
+    #box5 {
+        background-color: #7194a5;
+    }
+    #box6 {
+        background-color: #a5717a;
+    }
+    #box7 {
+        background-color: #71a59c;
+    }
+    #box8 {
+        background-color: #aaaaaa;
+        overflow: hidden;
+    }
+/* ALL DIV BOX TEXT SIZING */     
+    .blocks > p {
+        padding: 0px;
+        margin: 0px;
+        font-size: 20px;
+        overflow: hidden;    /*Text stacking/re-alignment code*/
+        white-space: nowrap;
+        white-space: pre-wrap;   
+        white-space: wrap;       
+        word-wrap: break-word;
+        text-size-adjust: auto;
+        opacity: .6;
+    }
+/* INDIVIDUAL DIV BOX TEXT CONTROLS */
+    #box1 > p {
+        font-family: Verdana;
+        text-align: left;
+        color: black;
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+    #box2 > p {
+        font-family: American Typewriter, Copperplate, cursive;
+        text-align: right;
+        margin-top: 130px;
+        margin-right: 20px;
+    }
+    #box3 > p {
+        font-family: ;
+        text-align: center;
+        margin-top: 125px;
+        color: black;
+        
+    }
+    #box4 > p {
+        font-family: Verdana;
+        text-align: right;
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        padding: 0px;
+    }
+    #box5 > p {
+        font-family: Times;
+        text-align: center;
+        margin-top: 125px;
+    }
+    #box6 > p {
+        font-family: Verdana;
+        text-align: center;
+        margin-top: 125px;
+    }
+    #box7 > p {
+        text-align: left;
+        font-size: 17px;
+    }
+    #box8 > p {
+        font-family: Comic Sans MS, Georgia;
+        text-align: center;
+        margin-top: 3%;
+    }
+/* SCROLL BOX */ 
+    #codeBox {
+        background-color: #71a59c;
+        overflow: scroll;
+        width: 60%;
+        height: 215px;
+        opacity: 1.0;
+        color: rebeccapurple;
+        padding: 5px;
+        position: relative;
+        margin-left: 17%;
+        font-family: sans-serif;
+    }
+/* OVERLAY BUTTON */
+    .menuButton {
+        text-align: inherit; 
+        cursor: pointer;  
+        background-color: #fff;
+        padding-bottom: 5px;
+        border-radius: 10px;
+    }
+/* Full screen overlay nav window- slide right  */    
+/*The overlay background*/
+    .overlay {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        left: 0px;
+        top: 0px;
+        background-color: slategrey;
+        opacity: .9;
+        overflow-x: hidden;
+        transition: 0.7s;
+    }
+    .overlay-content {
+        position: relative;
+        top: 25%;
+        width: 100%;
+        text-align: center; 
+        margin-top: 30px;
+    }
+    .overlay a {
+        padding: 15px;
+        text-decoration: none;
+        font-size: 40px;
+        color: black;
+        display: block; /
+        transition: 0.3s;
+    }
+    .overlay a:hover, .overlay a:focus {
+        color: #aaaaaa;
+    }
+    .closeButton {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px !important;
+    }
+/*When the height of the screen is less than 450px, change the font-size of the links and repostion the close button so no overlap*/
+@media screen and (max-height: 450px) {
+    .overlay a {
+        font-size: 20px
+        }
+    .closeButton {
+        font-size: 40px !important;
+        top: 15px;
+        right: 35px;
+    }
+}
+/* SOCIAL MEDIA ICONS */
+    .socContainer {
+        width: 50%;
+        height: 100%;
+        margin-left: 25%;
+        background-color: ;
+        
+    }
+    .socContainer div {
+        float: left;
+    }
+    .facebook {
+        background-image: url(facebookGrey.jpg);
+        background-repeat: no-repeat;
+        height: 48px;
+        width: 48px;
+        margin-left: 10%;
+        margin-top: 15%;
+        padding: 2%;
+        -moz-transition: all 0.3s ease; /*FF3.7+*/
+        -o-transition: all 0.3s ease; /*Opera 10.5 */
+        -webkit-transition: all 0.3s ease; /*Saf3.2, Chrome*/
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    .facebook:hover {
+        background-image: url(facebookBlue.jpg);
+        background-position: ;
+        border-radius: 10px;
+    }
+    .linkedIn {
+        background-image: url(linkedinGrey.jpg);
+        background-repeat: no-repeat;
+        height: 48px;
+        width: 48px;
+        margin-left: 10%;
+        margin-top: 15%;
+        padding: 2%;
+        -moz-transition: all 0.3s ease; /*FF3.7+*/
+        -o-transition: all 0.3s ease; /*Opera 10.5 */
+        -webkit-transition: all 0.3s ease; /*Saf3.2, Chrome*/
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    .linkedIn:hover {
+        background-image: url(linkedinBlue.jpg);
+        background-position: inherit;
+        border-radius: 10px;
+    }
+    .github {
+        background-image: url(githubGrey.jpg);
+        background-repeat: no-repeat;
+        height: 48px;
+        width: 48px;
+        margin-left: 10%;
+        margin-top: 15%;
+        padding: 2%;
+        -moz-transition: all 0.3s ease; /*FF3.7+*/
+        -o-transition: all 0.3s ease; /*Opera 10.5 */
+        -webkit-transition: all 0.3s ease; /*Saf3.2, Chrome*/
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    .github:hover {
+        background-image: url(githubBlue.jpg);
+        border-radius: 10px;
+    }
+    
+    /*//desktop
+@media screen and (min-width: 960px)  and (max-width: 1140px){
+    body { min-width:960px; }
+    facebook {
+        background-position:-20px 0;
+        height:28px;
+        width:28px;
+    }
+}
+
+//tablets
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    body { min-width:768px; }
+    linkedIn {
+        background-position:-32px 0px;
+        height:28px;
+        width:28px;
+    }
+}
+//mobile
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    body { min-width:480px; }
+    github {
+        background-position:-50px 0px;
+        height:28px;
+        width:28px;
+    }
+}*/
+</style>
+</head>
+<body class="main_body">
+    <nav id="nav_head">
+    <!-- Open/show overlay nav menu -->     
+    <span class="menuButton" onclick="openNav()">
+        <img src="threelines.png">
+        </span>
+    </nav>
+    <div class="wrapper">
+        <!-- The Overlay-->
+        <div id="navWindow" class="overlay">
+            <!-- Button to close the overlay navigation --> 
+            <a href="javascript:void(0)" class="closeButton" onclick="closeNav()">&times;</a>
+            <!-- Overlay content --> 
+            <div calss="overlay-content">
+                <a href="#">About Me</a>
+                <a href="#">Contact Me</a>
+                <a href="#">My Work</a>
+            </div>
+        </div>   
+    <div class="blocks" id="box1">
+        <p>Welcome</p>
+        <p>My name is Lucas Paskash</p>
+        <p>This is my online portfolio</p>
+    </div>
+    <div class="blocks" id="box2">
+        <p>Paskash Productions</p>
+    </div>
+    <div class="blocks" id="box3">
+        <p>My work</p> <!--Link to "my work/code" page here-->
+    </div>
+    <div class="blocks" id="box4">
+        <p>I'm a creative web developer</p>
+        <p>I seek a balance</p>
+        <p>between effective developement</p>
+        <p>and beautiful desgin</p>
+    </div>
+    <div class="blocks" id="box5">
+        <p>About me</p>
+    </div>
+    <div class="blocks" id="box6">
+        <p>Contact me</p>
+    </div> 
+    <div class="blocks" id="box7">
+        <p>Aesthetics</p>
+        <p id="codeBox">
+        /* CSS for page blocks and layover menu: */
+        
+        .blocks > p {
+        padding: 0px;
+        margin: 0px;
+        font-size: 20px;
+        overflow: hidden;    
+        white-space: nowrap;
+        white-space: pre-wrap;
+        white-space: wrap;
+        word-wrap: break-word;
+        text-size-adjust: auto;
+        opacity: .6;
+    }
+    /* Nav header (Covers the upward scrolling) */
+        #nav_head {
+        height: 0px;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        background: none repeat scroll 0 0 #fff;
+        overflow: visible;
+        border-top:  30px solid #fff; 
+        text-align: center;
+    }
+/* Full screen overlay nav window - slide right  */    
+     /* The overlay background */
+        .overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            left: 0px;
+            top: 0px;
+            background-color: slategrey;
+            opacity: .8;
+            overflow-x: hidden; 
+            transition: 0.7s;
+        }
+    /* Positions content inside overlay */
+        .overlay-content {
+            position: relative;
+            top: 25%; 
+            width: 100%;
+            text-align: center; 
+            margin-top: 30px; 
+        }
+    /* Nav links inside overlay */
+        .overlay a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 40px;
+            color: black;
+            display: block; 
+            transition: 0.3s; 
+        }
+        .overlay a:hover, .overlay a:focus {
+            color: wheat;
+        }
+    / Position the close button (top right corner) */
+        .closeButton {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 60px !important; 
+        }
+    /*When the height of the screen is less than 450px, change the font-size of the links and repostion the close button so no overlap*/
+        @media screen and (max-height: 450px) {
+            .overlay a {
+                font-size: 20px
+            }
+            .closeButton {
+                font-size: 40px !important;
+                top: 15px;
+                right: 35px;
+            }
+        }
+                             
+        /*JS for overlay menu:*/
+                                          
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }    
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }    
+    </p>
+    </div>    
+    <div class="blocks" id="box8">
+        <p>Social media</p>
+        <div class="socContainer">
+            <a href="https://www.facebook.com/lucas.paskash"><div class="facebook"></div></a> 
+            <a href="https://www.linkedin.com/in/lucaspaskash"><div class="linkedIn"></div></a>
+            <a href="https://github.com/lpaskash"><div class="github"></div></a>   
+        </div>
+    </div>
+</div><!--Wrapper end div-->
+<script>
+function openNav() {
+    document.getElementById("navWindow").style.width = "100%";
+}    
+function closeNav() {
+    document.getElementById("navWindow").style.width = "0%";
+}    
+
+</script>
+</body>
+</html>
+    
+    
+    
+    
+    
+    
+    
+    
+    
